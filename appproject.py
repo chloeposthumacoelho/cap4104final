@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-base url= "https://jobs.github.com/positions.json?description=python&location=miami"
+base_url= "https://jobs.github.com/positions.json?description=python&location=miami"
 def get_data(url):
     resp= requests.get(url)
     return resp.json()
