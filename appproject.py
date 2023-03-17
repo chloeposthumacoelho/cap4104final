@@ -33,8 +33,8 @@ with col1:
     if submit_search:
         search_url = base_url.format(search_term, location)
         data= get_data(search_url)
-       num_of_results= len(data)
-       st.subheader("showing {} jobs".format(num_of_results))
+        num_of_results= len(data)
+        st.subheader("showing {} jobs".format(num_of_results))
         st.write(data)
 "created at : Fri apr 30 15:o3:35 UTC 2021"
 "company: Inficon"
