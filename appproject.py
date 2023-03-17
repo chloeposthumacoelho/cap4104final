@@ -28,7 +28,7 @@ with nav3:
     st.text("search")
     submit_search = st.form_submit_button()
 st.success("search {} in {}" .format(search_term, location))
-col1, col2 = st.beta columns([2,1])
+col1, col2 = st.beta_columns([2,1])
 with col1:
     if submit_search:
         search_url = base_url.format(search_term, location)
