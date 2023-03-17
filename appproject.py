@@ -58,7 +58,7 @@ with st.beta_expander("description"):
 with st.beta_expander("how apply"):
        
     stc.html(JOB_DES_HTML_TEMPLATE.format(job_howtoapply,scrolling=True)
-             with col2:
+with col2:
         with st.form(key='email_form'):
             st.write("be first to get job info")
             email= st.text_input("Email")
