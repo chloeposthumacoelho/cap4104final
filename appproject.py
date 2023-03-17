@@ -23,7 +23,7 @@ def main():
             with nav1:
                 search_term =st.text_input("search")
         with nav2:
-            location = st.text input("location")
+            location = st.text_input("location")
 with nav3:
     st.text("search")
     submit_search = st.form_submit_button()
