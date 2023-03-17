@@ -55,7 +55,8 @@ for i in data:
                 #st.write(job_title)
 with st.beta_expander("description"):
     stc.html(JOB_DES_HTML_TEMPLATE.format(job_desc),scrolling=True)
-        with st.beta_expander("how apply"):
+with st.beta_expander("how apply"):
+       
     stc.html(JOB_DES_HTML_TEMPLATE.format(job_howtoapply,scrolling=True)
              with col2:
         with st.form(key='email_form'):
