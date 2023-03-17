@@ -53,8 +53,8 @@ for i in data:
     st.markdown(JOB_HTML_TEMPLATE.format(job_title, company, job_location,job_post_date),
     unsafe_allow_html=True)
                 #st.write(job_title)
-       with st.beta_expander("description"):
-stc.html(JOB_DES_HTML_TEMPLATE.format(job_desc),scrolling=True)
+  with st.beta_expander("description"):
+    stc.html(JOB_DES_HTML_TEMPLATE.format(job_desc),scrolling=True)
         with st.beta_expander("how apply"):
     stc.html(JOB_DES_HTML_TEMPLATE.format(job_howtoapply,scrolling=True)
              with col2:
