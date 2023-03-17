@@ -19,7 +19,7 @@ def main():
     if choice== "Home":
         st.subheader("home")
         with st.form(key='searchform'):
-nav1, nav2, nav2= st.beta_columns([3,2,1])
+            nav1, nav2, nav2= st.beta_columns([3,2,1])
             with nav1:
 search_term =st.text_input("search")
         with nav2:
