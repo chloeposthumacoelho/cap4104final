@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as stc
 import requests 
 
-base_url = "https://jobs.github.com/positions.json?description={}&location={}"
+base_url = "https://jobs.github.com/positions.json?description={}&location={miami}"
 
 # Fxn to Retrieve Data
 def get_data(url):
