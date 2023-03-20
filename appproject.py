@@ -44,7 +44,7 @@ def main():
 			with nav1:
 				search_term = st.text_input("Search Job")
 			with nav2:
-				location = st.text_input("Location")
+				location = st.text_input("Location: miami- FL")
 
 			with nav3:
 				st.text("Search ")
