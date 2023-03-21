@@ -3,8 +3,8 @@ import streamlit as st
 import requests
 
 # Notion Token
-token = '' 
-databaseID = ''
+token='secret_jmaR7EWtxKMWPB8GvTnx1yjwbPzUUNW9QrGlouTLIX9'
+databaseid='064c9fddf0f74cf786d0e16ff2ae608f'
 
 # Headers
 headers = {
