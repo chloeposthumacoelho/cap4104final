@@ -4,8 +4,7 @@ import streamlit.components.v1 as stc
 import requests 
 
 base_url = "https://jobs.github.com/positions.json?description={}&location={}"
-token='secret_jmaR7EWtxKMWPB8GvTnx1yjwbPzUUNW9QrGlouTLIX9'
-databaseid='064c9fddf0f74cf786d0e16ff2ae608f'
+
 # Fxn to Retrieve Data
 def get_data(url):
 	resp = requests.get(url)
@@ -14,7 +13,7 @@ def get_data(url):
 
 JOB_HTML_TEMPLATE = """
 <div style="width:100%;height:100%;margin:1px;padding:5px;position:relative;border-radius:5px;border-bottom-right-radius: 10px;
-box-shadow:0 0 1px 1px #eee; background-color: #31333F;
+box-shadow:0 0 1px 1px #eee; background-color: #f29dbd;
   border-left: 5px solid #6c6c6c;color:white;">
 <h4>{}</h4>
 <h4>{}</h4>
@@ -100,23 +99,6 @@ def main():
 
 				if submit_email:
 					st.success("A message was sent to {}".format(email))
-					def queryDatabase(databaseID, headers):
-    #readUrl= f"https://api.notion.com/v1/databases/(databaseID)/query"
-    readUrl = f"https://api.notion.com/v1/databases/(databaseID)/query"
-    res= requests.request("POST", readUrl, headers=headers)
-    data= res.json()
-    return res,data
-
-#retrieving from database
-def retrieveDatabase(databaseID, headers):
-    readUrl= f"https://api.notion.com/v1/databases/{databaseID}"
-    res= requests.request("GET", readUrl, headers=headers)
-    data= res.json()
-    return res , data
-#
-res, data= queryDatabase(databaseID, headers)
-st.write(res.status_code)
-st.json(data)
 
 
 
@@ -132,4 +114,3 @@ st.json(data)
 
 if __name__ == '__main__':
 	main()
-
