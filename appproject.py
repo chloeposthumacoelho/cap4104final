@@ -1,31 +1,36 @@
-#import streamlit as st
-import requests
-token='secret_jmaR7EWtxKMWPB8GvTnx1yjwbPzUUNW9QrGlouTLIX9'
-databaseid='064c9fddf0f74cf786d0e16ff2ae608f'
-
-headers= {
-
-"Authorization": "bearer" + token,
-"Content-Type": "application/json",
-"Notion-Version": "2021-05-13"
-}
-#query from database
+DATABASE_ID = "064c9fddf0f74cf786d0e16ff2ae608f"
+NOTION_URL = 'https://www.notion.so/Home-Cleaning-Datebase-064c9fddf0f74cf786d0e16ff2ae608f'
 
 
-def queryDatabase(databaseID, headers):
-    #readUrl= f"https://api.notion.com/v1/databases/(databaseID)/query"
-    readUrl = f"https://api.notion.com/v1/databases/(databaseID)/query"
-    res= requests.request("POST", readUrl, headers=headers)
-    data= res.json()
-    return res,data
+class NotionSync:
+    def __init__(self):
+        pass
 
-#retrieving from database
-def retrieveDatabase(databaseID, headers):
-    readUrl= f"https://api.notion.com/v1/databases/{databaseID}"
-    res= requests.request("GET", readUrl, headers=headers)
-    data= res.json()
-    return res , data
-#
-res, data= queryDatabase(databaseID, headers)
-st.write(res.status_code)
-st.json(data)
+    def query_databases(self, integration_token="secret_jmaR7EWtxKMWPB8GvTnx1yjwbPzUUNW9QrGlouTLIX9"):
+        database_url = NOTION_URL + DATABASE_ID + "/query"
+        response = requests.post(database_url, headers={"Authorization": f"{integration_token}"})
+        if response.status_code != 200:
+            raise ApiError(f'Response Status: {response.status_code}')
+        else:
+            return response.json()
+
+    def get_projects_titles(self, data_json):
+        return list(data_json["results"][0]["properties"].keys())
+
+    def get_projects_data(self, data_json, projects):
+        projects_data = {}
+        for p in projects:
+            if p != "Name" and p != "Date":
+                projects_data[p] = [data_json["results"][i]["properties"][p]["checkbox"]
+                                    for i in range(len(data_json["results"]))]
+            elif p == "Date":
+                dates = [data_json["results"][i]["properties"]["Date"]["date"]["start"]
+                         for i in range(len(data_json["results"]))]
+
+        return projects_data, dates
+
+
+nsync = NotionSync()
+data = nsync.query_databases()
+projects = nsync.get_projects_titles(data)
+projects_data, dates = nsync.get_projects_data(data, projects)
