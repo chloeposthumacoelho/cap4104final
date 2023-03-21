@@ -100,6 +100,23 @@ def main():
 
 				if submit_email:
 					st.success("A message was sent to {}".format(email))
+					def queryDatabase(databaseID, headers):
+    #readUrl= f"https://api.notion.com/v1/databases/(databaseID)/query"
+    readUrl = f"https://api.notion.com/v1/databases/(databaseID)/query"
+    res= requests.request("POST", readUrl, headers=headers)
+    data= res.json()
+    return res,data
+
+#retrieving from database
+def retrieveDatabase(databaseID, headers):
+    readUrl= f"https://api.notion.com/v1/databases/{databaseID}"
+    res= requests.request("GET", readUrl, headers=headers)
+    data= res.json()
+    return res , data
+#
+res, data= queryDatabase(databaseID, headers)
+st.write(res.status_code)
+st.json(data)
 
 
 
