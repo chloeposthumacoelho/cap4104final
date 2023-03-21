@@ -4,7 +4,8 @@ import streamlit.components.v1 as stc
 import requests 
 
 base_url = "https://jobs.github.com/positions.json?description={}&location={}"
-
+token='secret_jmaR7EWtxKMWPB8GvTnx1yjwbPzUUNW9QrGlouTLIX9'
+databaseid='064c9fddf0f74cf786d0e16ff2ae608f'
 # Fxn to Retrieve Data
 def get_data(url):
 	resp = requests.get(url)
